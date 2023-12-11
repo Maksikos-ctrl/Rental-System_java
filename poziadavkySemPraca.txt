@@ -1,0 +1,76 @@
+Všeobecné pokyny pri vypracovaní semestrálnej práce (JAVA)
+• Prezentácia 13 týždeň
+• Odovzdanie elektronicky (Teams): 16.12.2020 do 23:00
+Téma: Rental System / Požičovňa - Systém pre prenájom vozidiel
+Triedy:
+
+Vehicle - Vytvorte abstraktnú triedu s názvom Vehicle s atribútmi ako značka, model,
+rok a cena za hodinu/deň prenájmu. Implementujte metódy getter a setter pre tieto
+atribúty. Zadefinujte abstraktnú metódy calculateShorRentalCost(int hours),
+calculateRentalCost(int days), ktorá vypočíta cenu prenájmu na základe počtu
+hodín/dní.
+
+
+Car, Bike, ElectricCar, EBike, Scoore, EScooter a pod. –
+Pridajte ďalšie atribúty špecifické ako napríklad numberOfSeats, fuelType, dojazd,
+%baterie, nosnosť a pod.
+
+
+Customer – Zákazník by mal mať atribúty ako name, rentVehicle (inštancia alebo pole
+Vehicle) a pod.
+
+
+RentalSystem – nazov, pole vozidiel, financie a pod. Implementujte metódy na
+zobrazenie dostupných vozidiel, prenájom vozidla zákazníkovi, vrátenie vozidla,
+zobrazenie histórie prenájmu, prístup k financiam, opravy vozidiel a pod. Zabezpečte
+správnu validáciu na riešenie prípadov, ako je pokus o prenájom nedostupného
+vozidla alebo vrátenie vozidla, ktoré nebolo prenajaté a pod.
+
+
+
+public interface FuelVehicle
+
+
+{
+
+
+
+/**
+* Get the remaining fuel level of the fuel vehicle.
+*
+* @return The remaining fuel level in liters.
+*/
+double getFuelLevel();
+/**
+* Refuel the fuel vehicle to the specified fuel level.
+*
+* @param fuelLevel The target fuel level to refuel to.
+*/
+void refuel(double fuelLevel);
+}
+
+
+public interface ElectricVehicle {
+/**
+* Get the remaining battery percentage of the electric vehicle.
+*
+* @return The remaining battery percentage.
+*/
+int getBatteryPercentage();
+/**
+* Charge the electric vehicle to the specified battery percentage.
+*
+* @param batteryPercentage The target battery percentage to charge to.
+*/
+void charge(int batteryPercentage);
+}
+
+Povinné:
+- Interface, dedičnosť, abstraktná trieda, trieda
+- polia objektov
+- hľadanie a filtrovanie dát
+- ukladanie dát do súboru (save/load)
+- javadoc
+- user interface (jednoduché konzolové menu)
+- stručná dokumentácia 2-4 (bloková schéma a popis funkčnost)
+```
