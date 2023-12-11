@@ -49,6 +49,7 @@ V triede `VehicleFilters` sú implementované metódy na filtrovanie vozidiel po
 ## Jako Vyzera Struktura Projektu
 ![Alt text](image.png)
 
+
 ## Autor
 
 Tento projekt bol vytvorený Maksymov Chernikovym zo skupiny 3ZIE20 FEIT(IKT)
