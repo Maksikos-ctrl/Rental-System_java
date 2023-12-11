@@ -51,4 +51,4 @@ V triede `VehicleFilters` sú implementované metódy na filtrovanie vozidiel po
 
 ## Autor
 
-Tento projekt bol vytvorený [MaksymChernikov] ([https://github.com/Maksikos-ctrl]).
+Tento projekt bol vytvorený Maksymov Chernikovym zo skupiny 3ZIE20 FEIT(IKT)

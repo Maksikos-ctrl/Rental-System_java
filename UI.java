@@ -267,6 +267,7 @@ public class UI {
         if (rentalSystem != null) {
             System.out.println("Data loaded successfully!");
             displayVehicles(rentalSystem.getAvailableVehicles());
+            this.rentalSystem = rentalSystem;
         } else {
             System.out.println("Failed to load data.");
         }
