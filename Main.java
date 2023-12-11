@@ -14,6 +14,7 @@ public class Main {
 
         if (rentalSystem == null) {
             rentalSystem = initializeRentalSystem();
+            dataHandler.saveData(rentalSystem);
         }
 
         UI ui = new UI();

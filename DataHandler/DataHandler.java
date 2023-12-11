@@ -21,7 +21,16 @@ public class DataHandler {
 
     public RentalSystem loadData() {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
-            return (RentalSystem) ois.readObject();
+            
+            if (ois.available() > 0) {
+                return (RentalSystem) ois.readObject();
+            } else {
+                System.out.println("File is empty. Returning a new instance of RentalSystem.");
+                return new RentalSystem(filename); 
+            }
+        } catch (EOFException e) {
+            System.out.println("End of file reached. Returning a new instance of RentalSystem.");
+            return new RentalSystem(filename); 
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
             return null;

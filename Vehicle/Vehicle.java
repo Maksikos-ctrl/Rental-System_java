@@ -204,6 +204,13 @@ public abstract class Vehicle {
       
     }
 
+
+    @Override
+    public String toString() {
+        return "Vehicle [brand=" + brand + ", dailyRentalCost=" + dailyRentalCost + ", hourlyRentalCost="
+                + hourlyRentalCost + ", model=" + model + ", year=" + year + "]";
+    }
+
     
 
 

@@ -1,0 +1,62 @@
+@startuml
+abstract class Vehicle {
+  +brand: String
+  +model: String
+  +year: int
+  +hourlyRentalCost: double
+  +dailyRentalCost: double
+  +fuelLevel: double
+  +batteryLevel: double
+  +batteryConsumption: double
+  +batteryUsage: int
+  +color: String
+  +maxSpeed: int
+  +isFoldable: boolean
+  +hasAutopilot: boolean
+  +hasStorage: boolean
+  +typeOfBrza: String
+  +isElectric(): boolean
+  +displayInfo(): void
+}
+
+interface FuelVehicle {
+  +refuel(double): void
+}
+
+interface ElectricalVehicle {
+  +charge(double): void
+}
+
+class Car {
+}
+
+class Scooter {
+}
+
+class Bike {
+}
+
+class EBike {
+}
+
+class EScooter {
+}
+
+class ECar {
+}
+
+Vehicle <|-- Car
+Vehicle <|-- Scooter
+Vehicle <|-- Bike
+Vehicle <|-- EBike
+Vehicle <|-- EScooter
+Vehicle <|-- ECar
+
+Car -|> FuelVehicle
+Scooter -|> FuelVehicle
+Bike -|> FuelVehicle
+
+ECar -|> ElectricalVehicle
+EScooter -|> ElectricalVehicle
+EBike -|> ElectricalVehicle
+@enduml

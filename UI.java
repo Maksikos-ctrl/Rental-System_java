@@ -6,6 +6,7 @@ import Bikes.EBike;
 import Cars.Car;
 import Cars.ECar;
 import Customer.Customer;
+import DataHandler.DataHandler;
 import RentalSystem.RentalSystem;
 import Scooters.EScooter;
 import Vehicle.Vehicle;
@@ -16,9 +17,12 @@ import VehicleFilters.VehicleFilters;
 public class UI {
 
     private static Scanner scanner;
+    private DataHandler dataHandler;
+    private RentalSystem rentalSystem;
 
     public UI() {
-        scanner = new Scanner(System.in);
+        this.dataHandler = new DataHandler("rental_system_data.ser");
+        this.rentalSystem = new RentalSystem("MyRentalSystem");
     }
 
    
@@ -188,7 +192,7 @@ public class UI {
         displayVehicles(rentalSystem.getAvailableVehicles(), "Available Vehicles");
         System.out.print("Enter the index of the vehicle you want to rent: ");
         int index = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline character
+        scanner.nextLine(); 
 
         
 
@@ -258,12 +262,40 @@ public class UI {
         System.out.println("Total Finances: $" + rentalSystem.accessToFinances());
     }
 
-    private void loadDataFromFile() {
-
-   
+    public void loadData(RentalSystem rentalSystem) {
+        rentalSystem = dataHandler.loadData();
+        if (rentalSystem != null) {
+            System.out.println("Data loaded successfully!");
+            displayVehicles(rentalSystem.getAvailableVehicles());
+        } else {
+            System.out.println("Failed to load data.");
+        }
     }
 
     private void saveDataToFile() {
+        dataHandler.saveData(rentalSystem);
+        System.out.println("Data saved to file successfully!");
+    }
+
+    private void loadDataFromFile() {
+        rentalSystem = dataHandler.loadData();
+        if (rentalSystem != null) {
+            System.out.println("Data loaded successfully!");
+            displayVehicles(rentalSystem.getAvailableVehicles());
+        } else {
+            System.out.println("Failed to load data.");
+        }
+    }
+
+
+    private void displayVehicles(List<Vehicle> vehicles) {
+        System.out.println("======== Available Vehicles ========");
+
+        for (Vehicle vehicle : vehicles) {
+            System.out.println(vehicle);
+        }
+
+        System.out.println("======== Rental System Menu ========");        
     }
 
     private static void addCustomer(RentalSystem rentalSystem) {
