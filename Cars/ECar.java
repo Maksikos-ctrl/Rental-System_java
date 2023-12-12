@@ -1,9 +1,11 @@
 package Cars;
 
 
+import java.io.Serializable;
+
 import Vehicle.Vehicle;
 
-public class ECar extends Vehicle implements ElectricVehicle {
+public class ECar extends Vehicle implements ElectricVehicle, Serializable {
 
     private int batteryCapacity;
     private int batteryUsage;

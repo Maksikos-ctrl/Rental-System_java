@@ -21,6 +21,7 @@ abstract class Vehicle {
 
 interface FuelVehicle {
   +refuel(double): void
+  
 }
 
 interface ElectricalVehicle {

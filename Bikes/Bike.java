@@ -1,9 +1,11 @@
 package Bikes;
 
+import java.io.Serializable;
+
 import Vehicle.Vehicle;
 
 
-public class Bike extends Vehicle implements FuelVehicle {
+public class Bike extends Vehicle implements FuelVehicle, Serializable {
 
     private String bikeType;
     private double fuelLevel;
@@ -30,7 +32,7 @@ public class Bike extends Vehicle implements FuelVehicle {
         System.out.println("Year: " + getYear());
         System.out.println("Hourly rental cost: " + getHourlyRentalCost());
         System.out.println("Daily rental cost: " + getDailyRentalCost());
-        System.out.println("Bike type: " + getBikeType());
+        System.out.println("Bike type(Moutain or Road or Hybrid): " + getBikeType());
         
     }
 

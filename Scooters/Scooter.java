@@ -1,8 +1,10 @@
 package Scooters;
 
+import java.io.Serializable;
+
 import Vehicle.Vehicle;
 
-public class Scooter extends Vehicle implements FuelVehicle {
+public class Scooter extends Vehicle implements FuelVehicle, Serializable {
 
     private double fuelLevel;
     private int maxSpeed;

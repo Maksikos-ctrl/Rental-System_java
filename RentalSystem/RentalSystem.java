@@ -73,13 +73,13 @@ public class RentalSystem implements Serializable {
     
     
     public void displayRentalInfo() {
-        System.out.println("Available vehicles: ");
+        System.out.println("========Available vehicles: ========");
         for(Vehicle av : availableVehicles) {
             av.displayInfo();
             System.out.println();
         }
         
-        System.out.println("Rented vehicles: ");
+        System.out.println("========Rented vehicles: ========");
         for(Vehicle rv : rentedVehicles) {
             rv.displayInfo();
             System.out.println();
@@ -108,11 +108,17 @@ public class RentalSystem implements Serializable {
 
     public String accessToFinances() {
 
-        return "Total Finances: $" + finances;
+        double totalFinances = 0.0;
+
+        for (Customer customer : customers) {
+            totalFinances += customer.getBudget();
+        }
+
+        return "Total Finances: €" + totalFinances;
         
     }
 
-       public void addVehicleToInventory(Vehicle vehicle) {
+    public void addVehicleToInventory(Vehicle vehicle) {
         availableVehicles.add(vehicle);
     }
 

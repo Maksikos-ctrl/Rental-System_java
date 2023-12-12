@@ -4,36 +4,32 @@ import java.util.List;
 
 import RentalSystem.RentalSystem;
 
-public class DataHandler {
-    private String filename;
+public class DataHandler implements Serializable {
+    private static final String FILENAME = "rental_system_data.ser";
 
     public DataHandler(String filename) {
-        this.filename = filename;
+        filename = FILENAME;
     }
 
     public void saveData(RentalSystem rentalSystem) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filename))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(FILENAME))) {
             oos.writeObject(rentalSystem);
+            System.out.println("Data saved to file successfully!");
         } catch (IOException e) {
             e.printStackTrace();
+            System.out.println("Failed to save data to file.");
         }
     }
 
     public RentalSystem loadData() {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filename))) {
-            
-            if (ois.available() > 0) {
-                return (RentalSystem) ois.readObject();
-            } else {
-                System.out.println("File is empty. Returning a new instance of RentalSystem.");
-                return new RentalSystem(filename); 
-            }
-        } catch (EOFException e) {
-            System.out.println("End of file reached. Returning a new instance of RentalSystem.");
-            return new RentalSystem(filename); 
+        RentalSystem rentalSystem = null;
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(FILENAME))) {
+            rentalSystem = (RentalSystem) ois.readObject();
+            System.out.println("Data loaded successfully!");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
-            return null;
+            System.out.println("Failed to load data from file.");
         }
+        return rentalSystem;
     }
 }

@@ -10,19 +10,23 @@ import DataHandler.DataHandler;
 import RentalSystem.RentalSystem;
 import Scooters.EScooter;
 import Vehicle.Vehicle;
+
+import java.io.Serializable;
 import java.util.List;
 import VehicleFilters.VehicleFilters;
 
 
-public class UI {
+public class UI implements Serializable {
 
-    private static Scanner scanner;
+    private static Scanner scanner = new Scanner(System.in);
     private DataHandler dataHandler;
     private RentalSystem rentalSystem;
 
     public UI() {
+        
         this.dataHandler = new DataHandler("rental_system_data.ser");
         this.rentalSystem = new RentalSystem("MyRentalSystem");
+        this.scanner = new Scanner(System.in);
     }
 
    
@@ -233,7 +237,7 @@ public class UI {
     private void displayCustomers(List<Customer> customers) {
         System.out.println("======== Customers and Budgets ========");
         for (int i = 0; i < customers.size(); i++) {
-            System.out.println(i + ". " + customers.get(i).getName() + " - Budget: $" + customers.get(i).getBudget());
+            System.out.println(i + ". " + customers.get(i).getName() + " - Budget: €" + customers.get(i).getBudget());
         }
     }
 
@@ -259,7 +263,7 @@ public class UI {
 
     private void displayFinances(RentalSystem rentalSystem) {
         System.out.println("======== Finances ========");
-        System.out.println("Total Finances: $" + rentalSystem.accessToFinances());
+        System.out.println(rentalSystem.accessToFinances());
     }
 
     public void loadData(RentalSystem rentalSystem) {
@@ -271,23 +275,25 @@ public class UI {
         } else {
             System.out.println("Failed to load data.");
         }
+        System.out.flush();
     }
 
     private void saveDataToFile() {
         dataHandler.saveData(rentalSystem);
         System.out.println("Data saved to file successfully!");
+        System.out.flush();
     }
 
     private void loadDataFromFile() {
-        rentalSystem = dataHandler.loadData();
-        if (rentalSystem != null) {
-            System.out.println("Data loaded successfully!");
-            displayVehicles(rentalSystem.getAvailableVehicles());
+        RentalSystem loadedSystem = dataHandler.loadData();
+        if (loadedSystem != null) {
+            displayVehicles(loadedSystem.getAvailableVehicles());
+            this.rentalSystem = loadedSystem;
         } else {
             System.out.println("Failed to load data.");
         }
     }
-
+    
 
     private void displayVehicles(List<Vehicle> vehicles) {
         System.out.println("======== Available Vehicles ========");

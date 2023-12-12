@@ -1,8 +1,10 @@
 package Scooters;
 
+import java.io.Serializable;
+
 import Vehicle.Vehicle;
 
-public class EScooter extends Vehicle implements ElectricVehicle {
+public class EScooter extends Vehicle implements ElectricVehicle, Serializable {
     private int batteryCapacity;
     private int maxSpeed;
     private String color;

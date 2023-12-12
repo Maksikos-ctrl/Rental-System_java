@@ -2,9 +2,11 @@ package Bikes;
 
 
 
+import java.io.Serializable;
+
 import Vehicle.Vehicle;
 
-public class EBike extends Vehicle implements ElectricVehicle {
+public class EBike extends Vehicle implements ElectricVehicle, Serializable {
 
    
     private int maxSpeed;
@@ -18,12 +20,6 @@ public class EBike extends Vehicle implements ElectricVehicle {
         this.maxSpeed = maxSpeed;
         this.color = color;
     }
-
-
-    
-
-    
-
 
 
 

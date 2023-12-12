@@ -1,5 +1,7 @@
 package Customer;
 
+import java.io.Serializable;
+
 import Vehicle.Vehicle;
 
 /* 

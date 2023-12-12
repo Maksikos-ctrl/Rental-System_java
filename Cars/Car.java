@@ -1,10 +1,12 @@
 package Cars;
 
 
+import java.io.Serializable;
+
 import Vehicle.Vehicle;
 
 
-public class Car extends Vehicle implements FuelVehicle {
+public class Car extends Vehicle implements FuelVehicle, Serializable {
  
     private int numDoors;
     private int numberOfSeats;
