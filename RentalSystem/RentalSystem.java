@@ -138,5 +138,11 @@ public class RentalSystem implements Serializable {
         this.customers = other.customers;
         this.finances = other.finances;
     }
+
+
+    public void setAvailableVehicles(List<Vehicle> availableVehicles2) {
+
+        this.availableVehicles = availableVehicles2;
+    }
    
 }

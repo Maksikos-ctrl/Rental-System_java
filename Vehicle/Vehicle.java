@@ -1,5 +1,7 @@
 package Vehicle;
 
+import java.io.Serializable;
+
 /* 
  * 
  * 
@@ -14,7 +16,7 @@ package Vehicle;
  * 
  */
 
-public abstract class Vehicle {
+public abstract class Vehicle implements Serializable {
     private String brand;
     private String model;
     private int year;

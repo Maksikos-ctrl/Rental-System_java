@@ -91,6 +91,7 @@ public class UI implements Serializable {
                     break;
                 case 12:
                     loadDataFromFile();
+                    rentalSystem.getAvailableVehicles();
                     break;
                 case 13:
                     System.out.println("Exiting the Rental System. Thank you!");
@@ -269,9 +270,10 @@ public class UI implements Serializable {
     public void loadData(RentalSystem rentalSystem) {
         rentalSystem = dataHandler.loadData();
         if (rentalSystem != null) {
+            this.rentalSystem = rentalSystem;
             System.out.println("Data loaded successfully!");
             displayVehicles(rentalSystem.getAvailableVehicles());
-            this.rentalSystem = rentalSystem;
+            
         } else {
             System.out.println("Failed to load data.");
         }
@@ -284,26 +286,59 @@ public class UI implements Serializable {
         System.out.flush();
     }
 
-    private void loadDataFromFile() {
+   
+   
+
+    public void loadDataFromFile() {
         RentalSystem loadedSystem = dataHandler.loadData();
         if (loadedSystem != null) {
-            displayVehicles(loadedSystem.getAvailableVehicles());
             this.rentalSystem = loadedSystem;
+            displayVehicles(loadedSystem.getAvailableVehicles());
+            System.out.println("Data loaded successfully!");
         } else {
             System.out.println("Failed to load data.");
         }
     }
     
 
-    private void displayVehicles(List<Vehicle> vehicles) {
-        System.out.println("======== Available Vehicles ========");
+    // public void loadDataFromFile() {
+    //     RentalSystem loadedSystem = dataHandler.loadData();
+    //     if (loadedSystem != null) {
+    //         this.rentalSystem = loadedSystem;
+            
+           
+    //         rentalSystem.setAvailableVehicles(loadedSystem.getAvailableVehicles());
+            
+    //         displayVehicles(rentalSystem.getAvailableVehicles());
+            
+    //         System.out.println("Data loaded successfully!");
+    //     } else {
+    //         System.out.println("Failed to load data.");
+    //     }
+    // }
+    
+    
 
-        for (Vehicle vehicle : vehicles) {
-            System.out.println(vehicle);
+
+
+    
+
+   
+
+    private void displayVehicles(List<Vehicle> availableVehicles) {
+        if (availableVehicles.isEmpty()) {
+            System.out.println("No available vehicles.");
+        } else {
+            System.out.println("======== Available Vehicles ========");
+            for (Vehicle vehicle : availableVehicles) {
+                System.out.println(vehicle);
+            }
         }
-
-        System.out.println("======== Rental System Menu ========");        
+        System.out.println("======== Rental System Menu ========");
     }
+
+    
+    
 
     private static void addCustomer(RentalSystem rentalSystem) {
         System.out.print("Enter customer name: ");

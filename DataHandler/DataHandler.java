@@ -1,14 +1,12 @@
 package DataHandler;
 import java.io.*;
-import java.util.List;
-
 import RentalSystem.RentalSystem;
 
 public class DataHandler implements Serializable {
-    private static final String FILENAME = "rental_system_data.ser";
+    private final String FILENAME;
 
     public DataHandler(String filename) {
-        filename = FILENAME;
+        this.FILENAME = filename;
     }
 
     public void saveData(RentalSystem rentalSystem) {
