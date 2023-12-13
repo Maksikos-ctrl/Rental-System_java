@@ -91,7 +91,7 @@ public class UI implements Serializable {
                     break;
                 case 12:
                     loadDataFromFile();
-                    rentalSystem.getAvailableVehicles();
+                    displayVehicles(rentalSystem.getAvailableVehicles(), "Available Vehicles");
                     break;
                 case 13:
                     System.out.println("Exiting the Rental System. Thank you!");
