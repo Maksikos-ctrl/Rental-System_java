@@ -39,7 +39,7 @@ Dáta sú ukladané do binárneho súboru (`ser`) pomocou triedy `DataHandler`. 
 
 ## Filtrovania vozidiel
 
-V triede `VehicleFilters` sú implementované metódy na filtrovanie vozidiel podľa rôznych kritérií ako značka, model, rok výroby, farba, typ, atd.
+V triede `VehicleFilters` sú implementované metódy na filtrovanie vozidiel podľa rôznych kritérií ako značka, model, rok výroby, farba, typ, atd.r`:
 
 ## Použitie
 
