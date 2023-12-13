@@ -9,6 +9,7 @@ import Customer.Customer;
 import DataHandler.DataHandler;
 import RentalSystem.RentalSystem;
 import Scooters.EScooter;
+import Scooters.Scooter;
 import Vehicle.Vehicle;
 
 import java.io.Serializable;
@@ -492,7 +493,8 @@ public class UI implements Serializable {
         double hourlyRentalCost = scanner.nextDouble();
         System.out.println("Enter daily rental cost: ");
         double dailyRentalCost = scanner.nextDouble();
-        System.out.println("Enter bike type: ");
+        scanner.nextLine(); 
+        System.out.println("Enter bike type(Moutain or Road or Hybrid): ");
         String bikeType = scanner.nextLine();
         System.out.println("Enter fuel level: ");
         int fuelLevel = scanner.nextInt();
@@ -501,6 +503,28 @@ public class UI implements Serializable {
     }
 
     private static void addScooter(RentalSystem rentalSystem) {
+
+        System.out.println("Enter brand: ");
+        String brand = scanner.nextLine();
+        System.out.println("Enter model: ");
+        String model = scanner.nextLine();
+        System.out.println("Enter year: ");
+        int year = scanner.nextInt();
+        System.out.println("Enter hourly rental cost: ");
+        double hourlyRentalCost = scanner.nextDouble();
+        System.out.println("Enter daily rental cost: ");
+        double dailyRentalCost = scanner.nextDouble();
+        System.out.println("Enter fuel level: ");
+        int fuelLevel = scanner.nextInt();
+        System.out.println("Enter max speed: ");
+        int maxSpeed = scanner.nextInt();
+        System.out.println("Enter brake type: ");
+        String typeOfBrzda = scanner.nextLine();
+        System.out.println("Enter if the scooter has storage: ");
+        boolean hasStorage = scanner.nextBoolean();
+        rentalSystem.addVehicle(new Scooter(brand, model, year, hourlyRentalCost, dailyRentalCost, fuelLevel, maxSpeed, typeOfBrzda, hasStorage));
+       
+      
 	}
 
    
