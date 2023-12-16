@@ -21,6 +21,10 @@ import Vehicle.Vehicle;
  */
 
 
+/**
+ * The RentalSystem class represents a rental system that manages vehicles and customers.
+ * It allows adding vehicles to the inventory, renting and returning vehicles, and managing finances.
+ */
 public class RentalSystem implements Serializable {
 
     private String name;
@@ -31,6 +35,12 @@ public class RentalSystem implements Serializable {
 
 
     
+    /**
+     * Represents a rental system.
+     * This class manages the available vehicles, rented vehicles, customers, and finances of the rental system.
+     *
+     * @param name the name of the rental system
+     */
     public RentalSystem(String name) {
         this.name = name;
         this.availableVehicles = new ArrayList<>();
@@ -53,6 +63,12 @@ public class RentalSystem implements Serializable {
     }
     
    
+    /**
+     * Rents a vehicle by removing it from the list of available vehicles and adding it to the list of rented vehicles.
+     * Also updates the finances by deducting the rental cost.
+     * 
+     * @param vehicle the vehicle to be rented
+     */
     public void rentVehicle(Vehicle vehicle) {
         if (availableVehicles.contains(vehicle)) {
             availableVehicles.remove(vehicle);
@@ -64,6 +80,13 @@ public class RentalSystem implements Serializable {
     }
     
     
+    /**
+     * Returns a rented vehicle to the rental system.
+     * If the vehicle is currently rented, it will be removed from the list of rented vehicles
+     * and added to the list of available vehicles.
+     *
+     * @param vehicle the vehicle to be returned
+     */
     public void returnVehicle(Vehicle vehicle) {
         if(rentedVehicles.contains(vehicle)) {
             rentedVehicles.remove(vehicle);
@@ -72,6 +95,9 @@ public class RentalSystem implements Serializable {
     }
     
     
+    /**
+     * Displays the information of available and rented vehicles in the rental system.
+     */
     public void displayRentalInfo() {
         System.out.println("========Available vehicles: ========");
         for(Vehicle av : availableVehicles) {
@@ -87,6 +113,15 @@ public class RentalSystem implements Serializable {
     }
     
     
+    /**
+     * Calculates the rental cost for a given vehicle and rental duration.
+     * If the rental duration is less than 24 hours, it calls the calculateShortRentalCost method of the vehicle.
+     * Otherwise, it calls the calculateRentalCost method of the vehicle.
+     *
+     * @param vehicle The vehicle for which the rental cost is calculated.
+     * @param rentalDuration The duration of the rental in hours.
+     * @return The total rental cost.
+     */
     public double calculateRentalCost(Vehicle vehicle, int rentalDuration) {
         double totalCost = 0;
         if(rentalDuration < 24) {
@@ -106,6 +141,11 @@ public class RentalSystem implements Serializable {
     }
 
 
+    /**
+     * Calculates the total finances of the rental system.
+     * 
+     * @return A string representation of the total finances in the format "Total Finances: €[totalFinances]".
+     */
     public String accessToFinances() {
 
         double totalFinances = 0.0;
@@ -132,6 +172,11 @@ public class RentalSystem implements Serializable {
     }
 
 
+    /**
+     * Copies the data from another RentalSystem object.
+     * 
+     * @param other the RentalSystem object to copy the data from
+     */
     public void copyData(RentalSystem other) {
         this.availableVehicles = other.availableVehicles;
         this.rentedVehicles = other.rentedVehicles;

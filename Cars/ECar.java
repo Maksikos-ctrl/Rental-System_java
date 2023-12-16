@@ -5,13 +5,34 @@ import java.io.Serializable;
 
 import Vehicle.Vehicle;
 
+
 public class ECar extends Vehicle implements ElectricVehicle, Serializable {
+
+    /**
+ * Represents an electric car that extends the Vehicle class and implements the ElectricVehicle interface.
+ * It contains information about the battery capacity, battery usage, battery consumption, and whether it has autopilot.
+ */
 
     private int batteryCapacity;
     private int batteryUsage;
     private int batteryConsumption;
     private boolean hasAutopilot;
 
+
+
+     /**
+     * Constructs a new ECar object with the specified properties.
+     * 
+     * @param brand             the brand of the car
+     * @param model             the model of the car
+     * @param year              the year of the car
+     * @param hourlyRentalCost  the hourly rental cost of the car
+     * @param dailyRentalCost   the daily rental cost of the car
+     * @param batteryCapacity   the battery capacity of the car
+     * @param batteryUsage      the current battery usage of the car
+     * @param batteryConsumption   the battery consumption rate of the car
+     * @param hasAutopilot      indicates whether the car has autopilot feature
+     */
     public ECar(String brand, String model, int year, double hourlyRentalCost, double dailyRentalCost, int batteryCapacity, int batteryUsage, int batteryConsumption, boolean hasAutopilot) {
         super(brand, model, year, hourlyRentalCost, dailyRentalCost);
         this.batteryCapacity = batteryCapacity;
@@ -58,6 +79,13 @@ public class ECar extends Vehicle implements ElectricVehicle, Serializable {
         System.out.println("ECar: " + getBrand() + " " + getModel() + " " + getYear() + " " + getBatteryCapacity() + " " + getBatteryUsage() + " " + getBatteryConsumption() + " " + isHasAutopilot());
     }
 
+    /**
+     * Calculates the cost of a short rental for an electric car based on the number of hours.
+     * The hourly rate is determined by the battery capacity of the car.
+     *
+     * @param hours the number of hours for the rental
+     * @return the cost of the short rental
+     */
     @Override
     public double calculateShortRentalCost(int hours) {
 
@@ -80,6 +108,13 @@ public class ECar extends Vehicle implements ElectricVehicle, Serializable {
         
     }
 
+    /**
+     * Calculates the rental cost for the electric car based on the number of days.
+     * The daily rate is determined by the battery capacity of the car.
+     *
+     * @param days The number of days for which the car is rented.
+     * @return The total rental cost for the specified number of days.
+     */
     @Override
 
     public double calculateRentalCost(int days) {
@@ -111,6 +146,11 @@ public class ECar extends Vehicle implements ElectricVehicle, Serializable {
        
     }
 
+    /**
+     * Charges the battery of the electric car.
+     * 
+     * @param batteryPercentage the percentage of battery to charge
+     */
     @Override
     public void charge(int batteryPercentage) {
 

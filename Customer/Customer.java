@@ -12,7 +12,8 @@ Vehicle) a pod.
 
  */
 
-public class Customer {
+public class Customer implements Serializable {
+    private static final long serialVersionUID = 1L; // toto je tu len preto, aby som sa zbavil warningu
     
     private String name;
     private Vehicle rentVehicle;

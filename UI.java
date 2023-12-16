@@ -23,6 +23,10 @@ public class UI implements Serializable {
     private DataHandler dataHandler;
     private RentalSystem rentalSystem;
 
+    /**
+     * The UI class represents the user interface of the rental system.
+     * It initializes the necessary objects and provides methods for user interaction.
+     */
     public UI() {
         
         this.dataHandler = new DataHandler("rental_system_data.ser");
@@ -49,7 +53,11 @@ public class UI implements Serializable {
         System.out.print("Enter your choice: ");
     }
 
-    public void run(RentalSystem rentalSystem) {
+    /**
+     * Runs the rental system by displaying a menu of options and executing the selected operation.
+     * Continues to display the menu until the user chooses to exit the system.
+     */
+    public void run() {
         int choice;
         do {
             displayMenu();
@@ -88,6 +96,7 @@ public class UI implements Serializable {
                     filterVehicles(rentalSystem);
                     break;
                 case 11:
+                    System.out.println("Adress pred ulozeni." + rentalSystem);
                     saveDataToFile();
                     break;
                 case 12:
@@ -105,6 +114,11 @@ public class UI implements Serializable {
     }
 
     
+    /**
+     * Filters the available vehicles based on user's choice and displays the filtered vehicles.
+     * 
+     * @param rentalSystem The rental system object.
+     */
     private void filterVehicles(RentalSystem rentalSystem) {
         VehicleFilters vehicleFiltering = new VehicleFilters();
 
@@ -185,6 +199,12 @@ public class UI implements Serializable {
     }
 
 
+    /**
+     * Displays a list of vehicles with a given title.
+     * 
+     * @param vehicles the list of vehicles to display
+     * @param title the title to be displayed
+     */
     private void displayVehicles(List<Vehicle> vehicles, String title) {
         System.out.println("======== " + title + " ========");
         for (Vehicle vehicle : vehicles) {
@@ -193,6 +213,15 @@ public class UI implements Serializable {
         }
     }
 
+    /**
+     * Allows a customer to rent a vehicle from the rental system.
+     * Displays available vehicles and prompts the user to select a vehicle and a customer.
+     * Checks if the selected customer has sufficient budget to rent the vehicle.
+     * If the budget is sufficient, updates the rental system, finances, and customer's budget accordingly.
+     * Prints the details of the rented vehicle.
+     * 
+     * @param rentalSystem the rental system object
+     */
     private void rentVehicle(RentalSystem rentalSystem) {
         System.out.println("======== Rent a Vehicle ========");
         displayVehicles(rentalSystem.getAvailableVehicles(), "Available Vehicles");
@@ -236,6 +265,11 @@ public class UI implements Serializable {
         }
     }
 
+    /**
+     * Displays the list of customers and their budgets.
+     * 
+     * @param customers The list of customers to be displayed.
+     */
     private void displayCustomers(List<Customer> customers) {
         System.out.println("======== Customers and Budgets ========");
         for (int i = 0; i < customers.size(); i++) {
@@ -246,6 +280,11 @@ public class UI implements Serializable {
 
    
 
+    /**
+     * Returns a rented vehicle to the rental system.
+     * 
+     * @param rentalSystem the rental system object
+     */
     private void returnVehicle(RentalSystem rentalSystem) {
         System.out.println("======== Return a Vehicle ========");
         displayVehicles(rentalSystem.getRentedVehicles(), "Rented Vehicles");
@@ -263,11 +302,22 @@ public class UI implements Serializable {
         }
     }
 
+    /**
+     * Displays the finances of the rental system.
+     * Prints the finances information obtained from the rental system.
+     *
+     * @param rentalSystem the rental system object
+     */
     private void displayFinances(RentalSystem rentalSystem) {
         System.out.println("======== Finances ========");
         System.out.println(rentalSystem.accessToFinances());
     }
 
+    /**
+     * Loads data from the data handler into the rental system.
+     * 
+     * @param rentalSystem the rental system to load the data into
+     */
     public void loadData(RentalSystem rentalSystem) {
         rentalSystem = dataHandler.loadData();
         if (rentalSystem != null) {
@@ -290,33 +340,39 @@ public class UI implements Serializable {
    
    
 
-    public void loadDataFromFile() {
-        RentalSystem loadedSystem = dataHandler.loadData();
-        if (loadedSystem != null) {
-            this.rentalSystem = loadedSystem;
-            displayVehicles(loadedSystem.getAvailableVehicles());
-            System.out.println("Data loaded successfully!");
-        } else {
-            System.out.println("Failed to load data.");
-        }
-    }
-    
-
     // public void loadDataFromFile() {
     //     RentalSystem loadedSystem = dataHandler.loadData();
     //     if (loadedSystem != null) {
     //         this.rentalSystem = loadedSystem;
-            
-           
-    //         rentalSystem.setAvailableVehicles(loadedSystem.getAvailableVehicles());
-            
-    //         displayVehicles(rentalSystem.getAvailableVehicles());
-            
+    //         displayVehicles(loadedSystem.getAvailableVehicles());
     //         System.out.println("Data loaded successfully!");
     //     } else {
     //         System.out.println("Failed to load data.");
     //     }
     // }
+    
+
+    /**
+     * Loads data from a file into the rental system.
+     * If the data is loaded successfully, it updates the rental system with the loaded data
+     * and displays the available vehicles.
+     * If the data fails to load, it prints a failure message.
+     */
+    public void loadDataFromFile() {
+        RentalSystem loadedSystem = dataHandler.loadData();
+        if (loadedSystem != null) {
+            rentalSystem = loadedSystem;
+            
+           
+            rentalSystem.setAvailableVehicles(loadedSystem.getAvailableVehicles());
+            
+            displayVehicles(rentalSystem.getAvailableVehicles());
+            
+            System.out.println("Data loaded successfully!");
+        } else {
+            System.out.println("Failed to load data.");
+        }
+    }
     
     
 
@@ -326,6 +382,14 @@ public class UI implements Serializable {
 
    
 
+    /**
+     * Displays the list of available vehicles.
+     * If the list is empty, it prints "No available vehicles."
+     * Otherwise, it prints the details of each vehicle in the list.
+     * Finally, it prints the rental system menu.
+     *
+     * @param availableVehicles The list of available vehicles.
+     */
     private void displayVehicles(List<Vehicle> availableVehicles) {
         if (availableVehicles.isEmpty()) {
             System.out.println("No available vehicles.");
@@ -341,6 +405,11 @@ public class UI implements Serializable {
     
     
 
+    /**
+     * Adds a new customer to the rental system.
+     * 
+     * @param rentalSystem the rental system to add the customer to
+     */
     private static void addCustomer(RentalSystem rentalSystem) {
         System.out.print("Enter customer name: ");
         String name = scanner.nextLine();
@@ -389,6 +458,11 @@ public class UI implements Serializable {
 
    
 
+    /**
+     * Adds a new car to the rental system.
+     * 
+     * @param rentalSystem the rental system to add the car to
+     */
 	private static void addCar(RentalSystem rentalSystem) {
         System.out.println("Enter brand: ");
         String brand = scanner.nextLine();
@@ -416,6 +490,14 @@ public class UI implements Serializable {
 
     }
 
+    /**
+     * Adds an electric bike to the rental system.
+     * Prompts the user to enter the brand, model, year, hourly rental cost, daily rental cost,
+     * max speed, and color of the electric bike.
+     * Creates a new EBike object with the provided information and adds it to the rental system.
+     *
+     * @param rentalSystem the rental system to add the electric bike to
+     */
     private static void addElectricBike(RentalSystem rentalSystem) {
         System.out.println("Enter brand: ");
         String brand = scanner.nextLine();
@@ -436,6 +518,14 @@ public class UI implements Serializable {
         rentalSystem.addVehicle(new EBike(brand, model, year, hourlyRentalCost, dailyRentalCost, maxSpeed, color));
     }
 
+    /**
+     * Adds an electric scooter to the rental system.
+     * Prompts the user to enter the brand, model, year, hourly rental cost, daily rental cost,
+     * battery capacity, max speed, color, and whether the scooter is foldable.
+     * Creates a new EScooter object with the entered information and adds it to the rental system.
+     *
+     * @param rentalSystem the rental system to add the electric scooter to
+     */
     private static void addElectricScooter(RentalSystem rentalSystem) {
         System.out.println("Enter brand: ");
         String brand = scanner.nextLine();
@@ -458,6 +548,13 @@ public class UI implements Serializable {
         rentalSystem.addVehicle(new EScooter(brand, model, year, hourlyRentalCost, dailyRentalCost, batteryCapacity, maxSpeed, color, isFoldable));
     }
 
+    /**
+     * Adds an electric car to the rental system.
+     * Prompts the user to enter the brand, model, year, rental costs, battery information, and autopilot availability.
+     * Creates a new ECar object with the provided information and adds it to the rental system.
+     *
+     * @param rentalSystem the rental system to add the electric car to
+     */
     private static void addElectricCar(RentalSystem rentalSystem) {
         System.out.println("Enter brand: ");
         String brand = scanner.nextLine();
@@ -482,6 +579,11 @@ public class UI implements Serializable {
        
     }
 
+    /**
+     * Adds a bike to the rental system.
+     * 
+     * @param rentalSystem the rental system to add the bike to
+     */
     private static void addBike(RentalSystem rentalSystem) {
         System.out.println("Enter brand: ");
         String brand = scanner.nextLine();
@@ -493,7 +595,7 @@ public class UI implements Serializable {
         double hourlyRentalCost = scanner.nextDouble();
         System.out.println("Enter daily rental cost: ");
         double dailyRentalCost = scanner.nextDouble();
-        scanner.nextLine(); 
+        scanner.nextLine();
         System.out.println("Enter bike type(Moutain or Road or Hybrid): ");
         String bikeType = scanner.nextLine();
         System.out.println("Enter fuel level: ");
@@ -502,6 +604,14 @@ public class UI implements Serializable {
 
     }
 
+    /**
+     * Adds a new scooter to the rental system.
+     * Prompts the user to enter the brand, model, year, hourly rental cost, daily rental cost, fuel level, max speed,
+     * brake type, and whether the scooter has storage. Creates a new Scooter object with the provided information
+     * and adds it to the rental system.
+     *
+     * @param rentalSystem the rental system to add the scooter to
+     */
     private static void addScooter(RentalSystem rentalSystem) {
 
         System.out.println("Enter brand: ");

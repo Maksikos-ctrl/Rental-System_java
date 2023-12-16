@@ -11,6 +11,21 @@ public class Scooter extends Vehicle implements FuelVehicle, Serializable {
     private String typeOfBrza;
     private boolean hasStorage;
 
+
+
+    /**
+     * Constructs a new Scooter object with the specified parameters.
+     * 
+     * @param brand the brand of the scooter
+     * @param model the model of the scooter
+     * @param year the year of manufacture of the scooter
+     * @param hourlyRentalCost the hourly rental cost of the scooter
+     * @param dailyRentalCost the daily rental cost of the scooter
+     * @param fuelLevel the fuel level of the scooter
+     * @param maxSpeed the maximum speed of the scooter
+     * @param typeOfBrza the type of braking system of the scooter
+     * @param hasStorage indicates whether the scooter has storage space
+         */
     public Scooter(String brand, String model, int year, double hourlyRentalCost, double dailyRentalCost, int fuelLevel, int maxSpeed, String typeOfBrza, boolean hasStorage) {
         super(brand, model, year, hourlyRentalCost, dailyRentalCost);
         this.fuelLevel = fuelLevel;

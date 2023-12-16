@@ -5,12 +5,29 @@ import java.io.Serializable;
 import Vehicle.Vehicle;
 
 
+/**
+ * Represents a Bike object.
+ * Inherits from the Vehicle class.
+ */
 public class Bike extends Vehicle implements FuelVehicle, Serializable {
 
     private String bikeType;
     private double fuelLevel;
 
+ 
 
+ 
+     /**
+         * Constructs a Bike object with the specified parameters.
+         * 
+         * @param brand the brand of the bike
+         * @param model the model of the bike
+         * @param year the year of the bike
+         * @param hourlyRentalCost the hourly rental cost of the bike
+         * @param dailyRentalCost the daily rental cost of the bike
+         * @param bikeType the type of the bike
+         * @param fuelLevel the fuel level of the bike
+         */
     public Bike(String brand, String model, int year, double hourlyRentalCost, double dailyRentalCost, String bikeType, int fuelLevel) {
         super(brand, model, year, hourlyRentalCost, dailyRentalCost);
         this.bikeType = bikeType;
@@ -24,6 +41,8 @@ public class Bike extends Vehicle implements FuelVehicle, Serializable {
     public void setBikeType(String bikeType) {
         this.bikeType = bikeType;
     }
+
+
 
     public void displayInfo() {
         super.displayInfo();
@@ -41,8 +60,15 @@ public class Bike extends Vehicle implements FuelVehicle, Serializable {
 
         return fuelLevel;
     
-    }
+    } 
 
+
+    
+    /**
+     * Refuels the bike with the specified fuel level.
+     * 
+     * @param fuelLevel the fuel level to be added to the bike
+     */
     @Override
     public void refuel(double fuelLevel) {
 
@@ -57,6 +83,13 @@ public class Bike extends Vehicle implements FuelVehicle, Serializable {
        
     }
 
+    /**
+     * Calculates the cost of a short-term rental for the bike.
+     * The cost is calculated based on the bike type and the number of hours rented.
+     *
+     * @param hours the number of hours the bike is rented for
+     * @return the cost of the short-term rental
+     */
     @Override
     public double calculateShortRentalCost(int hours) {
 
@@ -76,6 +109,13 @@ public class Bike extends Vehicle implements FuelVehicle, Serializable {
         
     }
 
+    /**
+     * Calculates the rental cost for the bike based on the number of days.
+     * The rental cost includes the daily rental cost of the bike and additional costs for the helmet.
+     * 
+     * @param days The number of days for which the bike is rented.
+     * @return The total rental cost for the bike.
+     */
     @Override
     public double calculateRentalCost(int days) {
 

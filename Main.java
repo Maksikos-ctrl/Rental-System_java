@@ -6,6 +6,10 @@ import Scooters.Scooter;
 import Bikes.EBike;
 
 
+/**
+ * The main class of the rental system application.
+ * It initializes the rental system, loads data if available, and starts the user interface.
+ */
 public class Main {
 
     public static void main(String[] args) {
@@ -18,7 +22,7 @@ public class Main {
         }
 
         UI ui = new UI();
-        ui.run(rentalSystem);
+        ui.run();
     }
 
     private static RentalSystem initializeRentalSystem() {

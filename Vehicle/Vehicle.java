@@ -22,6 +22,19 @@ public abstract class Vehicle implements Serializable {
     private int year;
     private double hourlyRentalCost;
     private double dailyRentalCost;
+
+    /**
+     * Constructs a new Bike object with the specified parameters.
+     *
+     * @param brand             The brand of the bike.
+     * @param model             The model of the bike.
+     * @param year              The manufacturing year of the bike.
+     * @param hourlyRentalCost The hourly rental cost of the bike.
+     * @param dailyRentalCost  The daily rental cost of the bike.
+     * @param bikeType          The type of the bike (Mountain, Road, Hybrid, etc.).
+     * @param fuelLevel         The fuel level of the bike.
+     */
+
     
     public Vehicle(String brand, String model, int year, double hourlyRentalCost, double dailyRentalCost) {
         this.brand = brand;
@@ -82,6 +95,11 @@ public abstract class Vehicle implements Serializable {
     public abstract double calculateShortRentalCost(int hours);
     public abstract double calculateRentalCost(int days);
 
+    /**
+     * Checks if the vehicle has autopilot feature.
+     * 
+     * @return true if the vehicle has autopilot, false otherwise.
+     */
     public boolean isHasAutopilot() {
 
         if (isHasAutopilot() == true) {
@@ -92,6 +110,11 @@ public abstract class Vehicle implements Serializable {
         
     }
 
+    /**
+     * Returns the battery consumption of the vehicle.
+     * 
+     * @return the battery consumption of the vehicle
+     */
     public int getBatteryConsumption() {
 
         if (getBatteryConsumption() > 0) {
@@ -102,6 +125,11 @@ public abstract class Vehicle implements Serializable {
        
     }
 
+    /**
+     * Returns the battery usage of the vehicle.
+     * 
+     * @return the battery usage of the vehicle
+     */
     public int getBatteryUsage() {
 
         if (getBatteryUsage() > 0) {
@@ -112,6 +140,11 @@ public abstract class Vehicle implements Serializable {
         
     }
 
+    /**
+     * Checks if the vehicle is foldable.
+     * 
+     * @return true if the vehicle is foldable, false otherwise.
+     */
     public boolean isFoldable() {
 
         if (isFoldable() == true) {
@@ -122,6 +155,11 @@ public abstract class Vehicle implements Serializable {
        
     }
 
+    /**
+     * Checks if the vehicle has storage.
+     * 
+     * @return true if the vehicle has storage, false otherwise.
+     */
     public boolean isHasStorage() {
 
         if (isHasStorage() == true) {
@@ -132,6 +170,11 @@ public abstract class Vehicle implements Serializable {
         
     }
 
+    /**
+     * Returns the type of "Brza" for the vehicle.
+     * 
+     * @return the type of "Brza" as an Object. Possible values are "Disk", "VBrza", or "NoBrza".
+     */
     public Object getTypeOfBrza() {
 
         if (getTypeOfBrza() == "Disk") {
@@ -144,6 +187,11 @@ public abstract class Vehicle implements Serializable {
        
     }
 
+    /**
+     * Returns the current fuel level of the vehicle.
+     * 
+     * @return the fuel level of the vehicle
+     */
     public double getFuelLevel() {
 
         if (getFuelLevel() > 0) {
@@ -154,6 +202,11 @@ public abstract class Vehicle implements Serializable {
        
     }
 
+    /**
+     * Returns the battery capacity of the vehicle.
+     * 
+     * @return the battery capacity of the vehicle, or 0 if the battery capacity is not available.
+     */
     public int getBatteryCapacity() {
         
         if (getBatteryCapacity() > 0) {
@@ -164,6 +217,11 @@ public abstract class Vehicle implements Serializable {
        
     }
 
+    /**
+     * Returns the color of the vehicle.
+     * 
+     * @return the color of the vehicle as an Object
+     */
     public Object getColor() {
 
         if (getColor() == "Red") {
@@ -184,6 +242,11 @@ public abstract class Vehicle implements Serializable {
        
     }
 
+    /**
+     * Returns the maximum speed of the vehicle.
+     *
+     * @return the maximum speed of the vehicle
+     */
     public int getMaxSpeed() {
 
         if (getMaxSpeed() > 0) {
@@ -196,6 +259,11 @@ public abstract class Vehicle implements Serializable {
        
     }
 
+    /**
+     * Returns the battery level of the vehicle.
+     * 
+     * @return the battery level of the vehicle
+     */
     public double getBatteryLevel() {
 
         if (getBatteryLevel() > 0) {

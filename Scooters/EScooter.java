@@ -10,6 +10,21 @@ public class EScooter extends Vehicle implements ElectricVehicle, Serializable {
     private String color;
     private boolean isFoldable;
 
+
+    /**
+     * Constructs a new EScooter object with the specified properties.
+     *
+     * @param brand             the brand of the scooter
+     * @param model             the model of the scooter
+     * @param year              the year of manufacture
+     * @param hourlyRentalCost  the hourly rental cost of the scooter
+     * @param dailyRentalCost   the daily rental cost of the scooter
+     * @param batteryCapacity   the battery capacity of the scooter
+     * @param maxSpeed          the maximum speed of the scooter
+     * @param color             the color of the scooter
+     * @param isFoldable        indicates if the scooter is foldable
+     */
+
     public EScooter(String brand, String model, int year, double hourlyRentalCost, double dailyRentalCost, int batteryCapacity, int maxSpeed, String color, boolean isFoldable) {
         super(brand, model, year, hourlyRentalCost, dailyRentalCost);
         this.batteryCapacity = batteryCapacity;

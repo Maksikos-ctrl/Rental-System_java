@@ -14,7 +14,20 @@ public class Car extends Vehicle implements FuelVehicle, Serializable {
     private double fuelTankCapacity;
     private boolean isConvertible; 
 
-
+    /**
+     * Constructs a Car object with the specified properties.
+     * 
+     * @param brand the brand of the car
+     * @param model the model of the car
+     * @param year the year of the car
+     * @param hourlyRentalCost the hourly rental cost of the car
+     * @param dailyRentalCost the daily rental cost of the car
+     * @param numDoors the number of doors of the car
+     * @param numberOfSeats the number of seats in the car
+     * @param fuelType the fuel type of the car
+     * @param fuelTankCapacity the fuel tank capacity of the car
+     * @param isConvertible true if the car is convertible, false otherwise
+     */
 
     public Car(String brand, String model, int year, double hourlyRentalCost, double dailyRentalCost, int numDoors, int numberOfSeats, String fuelType, double fuelTankCapacity, boolean isConvertible) {
         super(brand, model, year, hourlyRentalCost, dailyRentalCost);
